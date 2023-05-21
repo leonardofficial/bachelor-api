@@ -13,7 +13,7 @@ RUN yarn install --prod --pure-lockfile -s &&\
 #COPY . ./
 #RUN yarn run build &&\
 #    yarn global remove typescript -s &&\
-    yarn cache clean -s
+#    yarn cache clean -s
 
 ENV NODE_ENV production
 
