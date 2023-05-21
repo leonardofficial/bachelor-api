@@ -10,11 +10,12 @@ RUN yarn install --prod --pure-lockfile -s &&\
     yarn global add typescript@latest -s &&\
     yarn cache clean -s
 
-COPY . ./
-RUN yarn run build &&\
-    yarn global remove typescript -s &&\
+#COPY . ./
+#RUN yarn run build &&\
+#    yarn global remove typescript -s &&\
     yarn cache clean -s
 
 ENV NODE_ENV production
 
-CMD ["node", "/app/build/src/index.js"]
+#using dev command for now
+CMD ["yarn", "dev"]
