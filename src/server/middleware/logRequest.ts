@@ -9,6 +9,10 @@ import { logger } from '../../logger';
  * @param next
  */
 export function logRequest(req: Request, res: Response, next: NextFunction) {
-  logger.info(`${req.method} - ${req.path} - ${JSON.stringify(req.body)}`);
+  logger.info(
+    `${req.method} - ${req.path} - BODY ${JSON.stringify(
+      req.body
+    )} - QUERY ${JSON.stringify(req.query)}`
+  );
   next();
 }
