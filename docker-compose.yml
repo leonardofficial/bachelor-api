@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  bachelor-api:
+    container_name: bachelor-api
+    build: ./
+    restart: always
+    networks:
+      - net
+networks:
+  net:
+    driver: bridge

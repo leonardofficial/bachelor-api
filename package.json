@@ -12,7 +12,8 @@
     "format": "prettier --write ./src",
     "lint": "eslint --fix",
     "prepare": "husky install",
-    "check-types": "tsc --noEmit --pretty"
+    "check-types": "tsc --noEmit --pretty",
+    "build": "tsc --build"
   },
   "dependencies": {
     "body-parser": "^1.20.2",

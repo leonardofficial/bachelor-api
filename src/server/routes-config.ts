@@ -8,6 +8,4 @@ import { wait } from './routes/wait';
  */
 export function routesConfig(app: Application) {
   app.post('/wait', [wait]);
-
-  // add more routes here
 }
