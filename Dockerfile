@@ -8,6 +8,7 @@ COPY package.json ./
 COPY yarn.lock ./
 RUN yarn install --prod --pure-lockfile -s &&\
     yarn global add typescript@latest -s &&\
+    yarn global add ts-node@latest -s &&\
     yarn cache clean -s
 
 #COPY . ./
