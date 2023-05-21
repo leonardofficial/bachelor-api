@@ -9,7 +9,6 @@ import { logger } from '../../logger';
  * @param next
  */
 export function logRequest(req: Request, res: Response, next: NextFunction) {
-  console.log(req);
   logger.info(
     `${req.method} - ${req.path} - BODY ${JSON.stringify(
       req.body

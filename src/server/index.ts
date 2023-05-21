@@ -1,4 +1,4 @@
-import * as bodyParser from 'body-parser';
+// import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as express from 'express';
 
@@ -12,8 +12,11 @@ import { routesConfig } from './routes-config';
  */
 const port = config.port || 8080;
 const app = express();
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 app.use(logRequest);
-app.use(bodyParser.json());
 app.use(cors({ origin: true }));
 routesConfig(app);
 
