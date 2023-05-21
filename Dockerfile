@@ -11,12 +11,14 @@ RUN yarn install --prod --pure-lockfile -s &&\
     yarn global add ts-node@latest -s &&\
     yarn cache clean -s
 
-#COPY . ./
+COPY . ./
 #RUN yarn run build &&\
 #    yarn global remove typescript -s &&\
 #    yarn cache clean -s
 
 ENV NODE_ENV production
+
+EXPOSE 8080
 
 #using dev command for now
 CMD ["yarn", "dev"]
