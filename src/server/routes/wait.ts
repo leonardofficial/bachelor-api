@@ -13,9 +13,9 @@ export async function wait(req: Request, res: Response) {
   try {
     const { delay, drift, a_amount: amount, class: c } = req.body;
 
-    if (c) {
+    if (c !== undefined) {
       // Do concept drift using stagger
-      const modifier = c === 1 ? 2 : 1;
+      const modifier = Number.parseInt(c, 10) === 1 ? 2 : 1;
       await sleep(randomizeDelay(modifier * (delay ?? 1000)));
       return res.status(200).send({ error: false, message: 'success' });
     }
