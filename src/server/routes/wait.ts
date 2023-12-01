@@ -11,7 +11,22 @@ import { randomizeDelay } from '../../utils/randomizeDelay';
  */
 export async function wait(req: Request, res: Response) {
   try {
-    const { delay, drift, a_amount: amount } = req.body;
+    const {
+      delay,
+      drift,
+      a_amount: amount,
+      x_1: x1,
+      x_2: x2,
+      x_3: x3,
+      class: c,
+    } = req.body;
+
+    if (x1 && x2 && x3 && c) {
+      // Do concept drift using stagger
+      const modifier = c === 1 ? 2 : 1;
+      await sleep(randomizeDelay(modifier * (delay ?? 1000)));
+      return res.status(200).send({ error: false, message: 'success' });
+    }
 
     let modifier;
     switch (drift) {
