@@ -1,3 +1,4 @@
 export function randomizeDelay(delay: number) {
-  return delay * (1 + Math.random() * 0.1);
+  const random = Math.floor(Math.random() * 10);
+  return delay + random;
 }

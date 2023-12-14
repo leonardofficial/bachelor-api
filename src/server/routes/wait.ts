@@ -4,6 +4,17 @@ import { sleep } from '../../utils/sleep';
 import { internalServerError } from '../errors/InternalServerError';
 import { randomizeDelay } from '../../utils/randomizeDelay';
 
+export function getGradualDelay(amount: number) {
+  if (amount == null || amount <= 30) {
+    return 1;
+  }
+  if (amount <= 70) {
+    // Linear interpolation between 1 (at 30) and 2 (at 70)
+    return 1 + (amount - 30) * (1.0 / 40.0);
+  }
+  return 2;
+}
+
 /**
  * Wait for a specified amount of time
  * @param req
@@ -27,7 +38,7 @@ export async function wait(req: Request, res: Response) {
         await sleep(randomizeDelay(modifier * (delay ?? 1000)));
         break;
       case 'gradual':
-        modifier = (amount ?? 0) / 100 + 1;
+        modifier = getGradualDelay(amount);
         await sleep(randomizeDelay(modifier * (delay ?? 1000)));
         break;
       case 'recurring':
